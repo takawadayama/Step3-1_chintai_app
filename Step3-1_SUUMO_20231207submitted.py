@@ -116,11 +116,15 @@ df_unique = df.drop_duplicates(subset=['address', 'floor', 'fee', 'management_fe
 import gspread
 from google.oauth2.service_account import Credentials
 
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 # GoogleSheetsAPI、GoogleDriveAPI、及び認証鍵の指定
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
 
 # jsonファイル名指定
-SERVICE_ACCOUNT_FILE = "C:/Users/waday/OneDrive - JRMアドバイザリー株式会社/7_Tech0/Step3\GS_JSON_KEY.json"
+SERVICE_ACCOUNT_FILE = os.getenv("SERVICE_ACCOUNT_FILE")
 
 # Service Accountの認証情報を取得
 credentials = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -129,7 +133,7 @@ credentials = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes
 gs = gspread.authorize(credentials)
 
 # 対象のスプレッドシートとワークシートを指定
-SPREADSHEET_KEY = "12ZMDButJlYL5QbtuPtQye2GuSBK1uX4UyV1A9_gnmMc"
+SPREADSHEET_KEY = os.getenv("SPREADSHEET_KEY")
 workbook = gs.open_by_key(SPREADSHEET_KEY)
 worksheet = workbook.worksheet("シート1")
 
