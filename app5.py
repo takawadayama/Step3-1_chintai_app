@@ -32,8 +32,11 @@ load_dotenv()
 # # スプレッドシートをDataFrameに取り込む
 # df = pd.DataFrame(worksheet.get_values()[1:], columns=worksheet.get_values()[0])
 
-import pandas as pd
-df = pd.read_csv("suumo.csv")
+# ファイルの絶対パスを取得
+file_path = os.path.join(os.path.dirname(__file__), "suumo.csv")
+
+# CSVファイルを読み込み
+df = pd.read_csv(file_path)
 
 # 都市名から緯度と経度を取得する関数
 def get_coordinates(address):
