@@ -15,3 +15,4 @@ requests-oauthlib
 streamlit
 streamlit-folium
 urllib3
+python-dotenv
