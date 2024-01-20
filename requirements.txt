@@ -15,4 +15,3 @@ requests-oauthlib
 streamlit
 streamlit-folium
 urllib3
-os
